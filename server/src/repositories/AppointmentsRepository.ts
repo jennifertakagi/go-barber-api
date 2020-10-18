@@ -1,4 +1,5 @@
-import { isEqual, startOfHour, parseISO } from 'date-fns';
+import { isEqual } from 'date-fns';
+
 import Appointment from "../models/Appointment";
 
 interface createAppointmentDTO {

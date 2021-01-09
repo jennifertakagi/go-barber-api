@@ -1,3 +1,5 @@
+import AppError from '@shared/errors/AppError';
+
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 
@@ -31,5 +33,49 @@ describe('AuthenticateUserService', () => {
 
     expect(response).toHaveProperty('token');
     expect(response.user).toEqual(user);
+  });
+
+  it('Not authenticate with non existent user', async () => {
+    const fakeUsersRepository = new FakeUsersRepository();
+    const fakeHashProvider = new FakeHashProvider();
+
+    const authenticateUser = new AuthenticateUserService(
+      fakeUsersRepository,
+      fakeHashProvider,
+    );
+
+    expect(
+      authenticateUser.execute({
+        email: 'johndoe@email.com',
+        password: 'abc123',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it("Not authenticate with wrong user's password", async () => {
+    const fakeUsersRepository = new FakeUsersRepository();
+    const fakeHashProvider = new FakeHashProvider();
+
+    const createUserService = new CreateUserService(
+      fakeUsersRepository,
+      fakeHashProvider,
+    );
+    const authenticateUser = new AuthenticateUserService(
+      fakeUsersRepository,
+      fakeHashProvider,
+    );
+
+    await createUserService.execute({
+      name: 'John Doe',
+      email: 'johndoe@email.com',
+      password: 'abc123',
+    });
+
+    expect(
+      authenticateUser.execute({
+        email: 'johndoe@email.com',
+        password: 'abc',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

@@ -1,11 +1,13 @@
 import AppError from '@shared/errors/AppError';
 
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
+
 import CreateAppointmentService from './CreateAppointmentService';
 
 describe('CreateAppointmentService', () => {
   it('Create a new appointment', async () => {
     const fakeAppointmentsRepository = new FakeAppointmentsRepository();
+
     const createAppointmentService = new CreateAppointmentService(
       fakeAppointmentsRepository,
     );
@@ -22,6 +24,7 @@ describe('CreateAppointmentService', () => {
 
   it('Not create two appointments on the same date', async () => {
     const fakeAppointmentsRepository = new FakeAppointmentsRepository();
+
     const createAppointmentService = new CreateAppointmentService(
       fakeAppointmentsRepository,
     );

@@ -38,8 +38,8 @@ class ResetPasswordService {
       throw new AppError('User does not exists');
     }
 
-    const tokenCreateAt = userToken.created_at;
-    const compareDate = addHours(tokenCreateAt, 2);
+    const tokenCreatedAt = userToken.created_at;
+    const compareDate = addHours(tokenCreatedAt, 2);
 
     if (isAfter(Date.now(), compareDate)) {
       throw new AppError('Token expired');

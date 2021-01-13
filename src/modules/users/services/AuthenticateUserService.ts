@@ -1,13 +1,12 @@
-import { inject, injectable } from 'tsyringe';
 import { sign } from 'jsonwebtoken';
-
 import authConfig from '@config/auth';
+import { injectable, inject } from 'tsyringe';
+
 import AppError from '@shared/errors/AppError';
 
+import User from '../infra/typeorm/entities/User';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
-
-import User from '../infra/typeorm/entities/User';
 
 interface IRequest {
   email: string;
@@ -15,8 +14,8 @@ interface IRequest {
 }
 
 interface IResponse {
-  token: string;
   user: User;
+  token: string;
 }
 
 @injectable()
@@ -45,7 +44,7 @@ class AuthenticateUserService {
       throw new AppError('Incorrect email/password combination', 401);
     }
 
-    const { expiresIn, secret } = authConfig.jwt;
+    const { secret, expiresIn } = authConfig.jwt;
 
     const token = sign({}, secret, {
       subject: user.id,
@@ -53,8 +52,8 @@ class AuthenticateUserService {
     });
 
     return {
-      token,
       user,
+      token,
     };
   }
 }

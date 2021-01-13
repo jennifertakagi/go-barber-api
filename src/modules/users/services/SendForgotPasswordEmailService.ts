@@ -28,10 +28,11 @@ class SendForgotPasswordEmailService {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new AppError('User does not exist');
+      throw new AppError('User does not exists.');
     }
 
     const { token } = await this.userTokensRepository.generate(user.id);
+
     const forgotPasswordTemplate = path.resolve(
       __dirname,
       '..',
@@ -44,12 +45,11 @@ class SendForgotPasswordEmailService {
         name: user.name,
         email: user.email,
       },
-      subject: '[GoBarber] Password recovery request received',
+      subject: '[GoBarber] Recuperação de senha',
       templateData: {
         file: forgotPasswordTemplate,
         variables: {
           name: user.name,
-          token,
           link: `http://localhost:3000/reset_password?token=${token}`,
         },
       },

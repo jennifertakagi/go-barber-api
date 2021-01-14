@@ -3,6 +3,7 @@ import { startOfHour, isBefore, getHours, format } from 'date-fns';
 
 import AppError from '@shared/errors/AppError';
 
+import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
 import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 
@@ -22,6 +23,9 @@ class CreateAppointmentService {
 
     @inject('NotificationsRepository')
     private notificationsRepository: INotificationsRepository,
+
+    @inject('CacheProvider')
+    private cacheProvider: ICacheProvider,
   ) {}
 
   public async execute({
@@ -41,7 +45,7 @@ class CreateAppointmentService {
 
     if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
       throw new AppError(
-        'You can only create appointments between 8am and 5pm.',
+        'You can only create appontments between 8am and 5pm.',
       );
     }
 
@@ -63,8 +67,15 @@ class CreateAppointmentService {
 
     await this.notificationsRepository.create({
       recipient_id: provider_id,
-      content: `New appointment to date: ${dateFormatted}`,
+      content: `Novo agendamento para dia ${dateFormatted}`,
     });
+
+    await this.cacheProvider.invalidate(
+      `provider-appointments:${provider_id}:${format(
+        appointmentDate,
+        'yyyy-M-d',
+      )}`,
+    );
 
     return appointment;
   }

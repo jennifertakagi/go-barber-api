@@ -46,7 +46,7 @@
 
 # :construction_worker: Installation
 
-**You need to install [NPM](https://www.npmjs.com/) and [YARN](https://yarnpkg.com/) first, then in order to clone the project via HTTPS, run this command:**
+**You need to install [NPM](https://www.npmjs.com/), [YARN](https://yarnpkg.com/) and [DOCKER](https://www.docker.com/) first, then in order to clone the project via HTTPS, run this command:**
 
 ```git clone https://github.com/jennifertakagi/go-barber-api.git```
 
@@ -56,12 +56,14 @@ SSH URLs provide access to a Git repository via SSH, a secure protocol. If you h
 
 **Install dependencies**
 
-You need to install the dependencies of the project, so **run the above command on root and in each of this folders**:
+You need to install the dependencies of the project, so **run the above command on root folder**:
 
 ```yarn```
 
 
 # :runner: Getting Started
+
+You need to pull the following docker's images: PostgreSQL, MongoDB and Redis.
 
 Run the following command to start the application in a development environment:
 
@@ -72,7 +74,7 @@ Run the following command to start the application in a development environment:
 
 **Question:** What are the technologies used in this project?
 
-**Answer:** The technologies used in this project are [Node JS](https://nodejs.org/en/), [Express JS](https://expressjs.com/), [TypeORM](https://typeorm.io/#/), [PostgreSQL](https://www.postgresql.org/), [MongoDB](https://www.mongodb.com/), [Redis](https://redis.io/), [Redis](https://redis.io/), [Bcryptjs](https://www.npmjs.com/package/bcryptjs), [Handlebars](https://handlebarsjs.com/), [Nodemailer](https://nodemailer.com/about/) and [Jest](https://jestjs.io/).
+**Answer:** The technologies used in this project are [Node JS](https://nodejs.org/en/), [Express JS](https://expressjs.com/), [Typescript](https://www.typescriptlang.org/), [TypeORM](https://typeorm.io/#/), [PostgreSQL](https://www.postgresql.org/), [MongoDB](https://www.mongodb.com/), [Redis](https://redis.io/), [Redis](https://redis.io/), [Bcryptjs](https://www.npmjs.com/package/bcryptjs), [Handlebars](https://handlebarsjs.com/), [Nodemailer](https://nodemailer.com/about/) and [Jest](https://jestjs.io/).
 
 # :bug: Issues
 

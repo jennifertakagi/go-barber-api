@@ -74,7 +74,7 @@ Run the following command to start the application in a development environment:
 
 **Question:** What are the technologies used in this project?
 
-**Answer:** The technologies used in this project are [Node JS](https://nodejs.org/en/), [Express JS](https://expressjs.com/), [Typescript](https://www.typescriptlang.org/), [TypeORM](https://typeorm.io/#/), [PostgreSQL](https://www.postgresql.org/), [MongoDB](https://www.mongodb.com/), [Redis](https://redis.io/), [Redis](https://redis.io/), [Bcryptjs](https://www.npmjs.com/package/bcryptjs), [Handlebars](https://handlebarsjs.com/), [Nodemailer](https://nodemailer.com/about/) and [Jest](https://jestjs.io/).
+**Answer:** The technologies used in this project are [Node JS](https://nodejs.org/en/), [Express JS](https://expressjs.com/), [Typescript](https://www.typescriptlang.org/), [TypeORM](https://typeorm.io/#/), [PostgreSQL](https://www.postgresql.org/), [MongoDB](https://www.mongodb.com/), [Redis](https://redis.io/), [Bcryptjs](https://www.npmjs.com/package/bcryptjs), [Handlebars](https://handlebarsjs.com/), [Nodemailer](https://nodemailer.com/about/) and [Jest](https://jestjs.io/).
 
 # :bug: Issues
 
